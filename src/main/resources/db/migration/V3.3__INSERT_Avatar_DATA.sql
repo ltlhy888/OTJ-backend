@@ -1,0 +1,2 @@
+INSERT INTO file_info VALUES
+("afe2c276-455b-43ea-a6db-945310ada806","2023-07-20 22:12:58","2023-07-20 22:12:58","AVATAR",0,"image/*","initial_avatar.jpg","BROWSER",0,"https://cdn-icons-png.flaticon.com/512/149/149071.png");

@@ -1,0 +1,71 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '2.7.12'
+	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+}
+
+group = 'com.ltech'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+
+	all {
+		exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+ext {
+	set('springCloudVersion', "2021.0.7")
+}
+
+dependencies {
+
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	// Security
+	implementation 'org.springframework.boot:spring-boot-starter-security:3.0.7'
+	implementation 'org.springframework.security:spring-security-crypto'
+	implementation 'org.springframework.boot:spring-boot-starter-log4j2'
+	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5'
+	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'
+	implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client:2.7.10'
+
+	// Email
+	implementation 'org.springframework.boot:spring-boot-starter-mail:2.7.11'
+
+	// String util
+	implementation 'org.apache.commons:commons-text:1.10.0'
+
+	// Dev
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+	// Mapping object
+	implementation 'org.mapstruct:mapstruct:1.4.2.Final'
+	implementation 'org.mapstruct:mapstruct-processor:1.4.2.Final'
+
+	// DB
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+	implementation 'org.flywaydb:flyway-mysql:8.5.13'
+
+
+	// Payment
+	implementation "com.stripe:stripe-java:22.4.0"
+
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}

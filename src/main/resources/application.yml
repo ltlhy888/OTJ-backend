@@ -1,0 +1,81 @@
+spring:
+  application:
+    name: bidding
+  datasource:
+    url: jdbc:mariadb://localhost:3306/otj
+    username: test
+    password: test
+    driver-class-name: org.mariadb.jdbc.Driver
+  flyway:
+    enabled: true
+    encoding: UTF-8
+    locations: classpath:db/migration
+    validate-on-migrate: true
+
+  jpa:
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+
+  mail:
+    transport:
+      protocol: smtp
+    host: smtp.office365.com
+    port: 587
+    username: tielinlili@outlook.com
+    password: 2002629Ltl.
+    properties:
+      mail:
+        smtp:
+          auth: true
+          socketFactory:
+            port: 587
+          starttls:
+            enable: true
+            required: true
+        EnableSSL:
+          enable: true
+
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 168003119735-nqmumrqebrpd9nomb9goi8ddocdh9utk.apps.googleusercontent.com
+            client-secret: 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
+            scope: openid,email,profile
+            access-token-uri: https://www.googleapis.com/oauth2/v3/token
+            user-authorization-uri: https://accounts.google.com/o/oauth2/auth
+            user-info-uri: https://www.googleapis.com/userinfo/v2/me
+            redirect-uri: http://localhost:3000/auth/thirdparty
+
+server:
+  port: 8080
+  error:
+    include-stacktrace: never
+
+# Custom properties
+application:
+  uri: http://localhost:8080
+
+jwt:
+  accessTokenExpirationMs: 3600000
+  refreshTokenExpirationMs: 604800000
+  jwtSecret: bHRscWRxZWZxZXdmcWZxd3Fxd2Rxd3FxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcQ==
+
+stripe:
+  api-key: sk_test_51NCwUgFcM95za95DJsMrgHKcBRTgqekhcrBKNubltFbMNyJHvbRjhxmB2KctL9Y2I1KbPv69G9eMC7wKpj8k8M6W00CnOBx6zn
+  webhook-secret: whsec_e1562ad561865831a0b1c30b80f75c884bab56ff5aa6eafffc39860651b2b3a8
+
+password:
+  salt: OTJSSALT
+
